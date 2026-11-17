@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Database Security Attacks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="embers"></canvas>
+  <div class="bg-grid"></div>
+  <div class="vignette"></div>
+  <div class="scanlines"></div>
+
+  <div id="viewport"><div id="deck"></div></div>
+
+  <div id="overview" hidden></div>
+  <aside id="notes" hidden></aside>
+  <div id="help" hidden>
+    <h3>Управление</h3>
+    <table>
+      <tr><td><kbd>→</kbd> <kbd>Пробел</kbd> <kbd>PgDn</kbd></td><td>Следующий шаг анимации / слайд</td></tr>
+      <tr><td><kbd>←</kbd> <kbd>PgUp</kbd></td><td>Назад</td></tr>
+      <tr><td>Клик по 3D-сцене</td><td>Следующий шаг цикла атаки</td></tr>
+      <tr><td><kbd>R</kbd></td><td>Начать цикл заново</td></tr>
+      <tr><td><kbd>A</kbd></td><td>Авто-показ цикла</td></tr>
+      <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Перейти к теме докладчика</td></tr>
+      <tr><td><kbd>N</kbd></td><td>Подсказка для докладчика</td></tr>
+      <tr><td><kbd>O</kbd></td><td>Все слайды</td></tr>
+      <tr><td><kbd>F</kbd></td><td>Полный экран</td></tr>
+      <tr><td><kbd>G</kbd></td><td>Открыть игру</td></tr>
+      <tr><td><kbd>H</kbd> / <kbd>?</kbd></td><td>Эта справка</td></tr>
+    </table>
+  </div>
+
+  <script src="vendor/three.global.js"></script>
+  <script src="js/embers.js"></script>
+  <script src="js/stage.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

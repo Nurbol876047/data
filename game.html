@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Взломай базу — игра</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <canvas id="embers"></canvas>
+  <div class="bg-grid"></div>
+  <div class="vignette"></div>
+  <div class="scanlines"></div>
+
+  <div id="viewport"><div id="deck" class="game">
+    <div class="hud">
+      <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22c4 0 7-3 7-7 0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-4-2 2-5 5-5 8 0 4 3 7 7 7z"/></svg>ВЗЛОМАЙ<span>_базу</span></div>
+      <div class="hud-right">
+        <div class="counter" id="qcount"></div>
+        <button class="ibtn" id="bSound" title="Звук (M)"></button>
+        <button class="ibtn" id="bFull" title="Полный экран (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        <a class="ibtn" href="index.html" title="К презентации"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </div>
+
+    <!-- 3D-хранилище -->
+    <div id="vault"><div class="vault-host"></div><div class="vault-info"><b id="hackPct">0%</b><span>ВЗЛОМ БАЗЫ</span></div></div>
+
+    <!-- НАСТРОЙКА -->
+    <section class="screen" id="scSetup">
+      <div class="kicker">Игра для группы</div>
+      <h1>Взломай <em>базу</em></h1>
+      <p class="lead">Отвечайте на вопросы по 4 темам. Каждый правильный ответ ломает слой защиты базы данных.</p>
+      <div class="setup">
+        <div class="card">
+          <h4>Режим</h4>
+          <div class="seg" id="mode"><button data-v="teams" class="on">Команды</button><button data-v="group">Вся группа</button></div>
+          <div id="teamsBox">
+            <h4 style="margin-top:18px">Команды</h4>
+            <div class="seg" id="tcount"><button data-v="2" class="on">2</button><button data-v="3">3</button><button data-v="4">4</button></div>
+            <div class="tnames" id="tnames"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h4>Темы</h4>
+          <div class="chips" id="topics"></div>
+          <h4 style="margin-top:18px">Вопросов</h4>
+          <div class="seg" id="qn"><button data-v="10">10</button><button data-v="15" class="on">15</button><button data-v="20">20</button><button data-v="999">Все</button></div>
+          <h4 style="margin-top:18px">Таймер</h4>
+          <div class="seg" id="timer"><button data-v="15">15 с</button><button data-v="20" class="on">20 с</button><button data-v="30">30 с</button><button data-v="0">Без</button></div>
+        </div>
+      </div>
+      <button class="bigbtn" id="bStart"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>Начать взлом</button>
+    </section>
+
+    <!-- ВОПРОС -->
+    <section class="screen" id="scQ" hidden>
+      <div class="qtop">
+        <span class="chip" id="qtopic"></span>
+        <span class="turn" id="qturn"></span>
+        <div class="timer" id="qtimer"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" class="trk"/><circle cx="50" cy="50" r="44" class="val" id="tval"/></svg><b id="tnum">20</b></div>
+      </div>
+      <h2 class="question" id="qtext"></h2>
+      <div class="answers" id="qans"></div>
+      <div class="explain" id="qexp" hidden></div>
+      <div class="qbottom">
+        <button class="btn" id="bReveal">Показать ответ</button>
+        <button class="btn primary" id="bNext" hidden>Дальше →</button>
+      </div>
+    </section>
+
+    <!-- ФИНАЛ -->
+    <section class="screen" id="scEnd" hidden>
+      <div class="kicker">Игра окончена</div>
+      <h1 id="endTitle">База <em>взломана!</em></h1>
+      <div class="podium" id="podium"></div>
+      <div class="endbtns"><button class="bigbtn" id="bAgain">Играть снова</button></div>
+    </section>
+
+    <div class="teams" id="teams"></div>
+    <div class="float" id="float"></div>
+  </div></div>
+
+  <script src="vendor/three.global.js"></script>
+  <script src="js/embers.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
